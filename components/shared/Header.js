@@ -5,7 +5,6 @@ import '../../styles/main.scss';
 
 class Header extends React.Component {
   render() {
-    debugger;
     const title = this.props.title;
 
     return (
