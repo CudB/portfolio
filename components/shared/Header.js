@@ -14,19 +14,19 @@ class Header extends React.Component {
       <p className='customClass'> I am styled P element </p>
       <p className='customClassFromFile'> I am styled P element </p>
         <Link href="/">
-            <a style={{'fontSize': '20px'}}> Home </a>
-          </Link>
-          <Link href="/about">
-            <a> About </a>
-          </Link>
-          <Link href="/portfolios">
-            <a> Portfolio </a>
-          </Link>
-          <Link href="/blogs">
-            <a> Blog </a>
-          </Link>
-          <Link href="/cv">
-            <a> CV </a>
+          <a style={{'fontSize': '20px'}}> Home </a>
+        </Link>
+        <Link href="/about">
+          <a> About </a>
+        </Link>
+        <Link href="/portfolios">
+          <a> Portfolio </a>
+        </Link>
+        <Link href="/blogs">
+          <a> Blog </a>
+        </Link>
+        <Link href="/cv">
+          <a> CV </a>
         </Link>
         <style jsx>{`
             a {

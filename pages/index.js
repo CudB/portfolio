@@ -1,13 +1,21 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
+import axios from 'axios';
 
 import SuperComponent from '../components/SuperComponent';
 
 class Index extends SuperComponent {
 
-  static getInitialProps() {
-    console.log('I am getInitialProps');
-    return {};
+  static async getInitialProps() {
+    let userData = {};
+
+    try {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+      userData = response.data;
+    } catch(err) {
+      console.log(err);
+    }
+    return { userData };
   }
 
   constructor(props) {
@@ -35,10 +43,13 @@ class Index extends SuperComponent {
   }
 
   render() {
+    const { title } = this.state;
+    const { userData } = this.props;
     return (
       <BaseLayout>
         <h1>Index Page</h1>
-        <h2> {this.state.title} </h2>
+        <h2> { title } </h2>
+        <h2> { userData.title } </h2>
         <button onClick={ () => this.updateTitle() }> Change Title </button>
       </BaseLayout>
     )
