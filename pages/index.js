@@ -7,6 +7,12 @@ import { Container, Row, Col } from 'reactstrap';
 
 class Index extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.roles = ['Developer', 'Tech Lover', 'Team Player', 'Course Creator', 'React.js', 'Angular'];
+  }
+
   render() {
     return (
       <BaseLayout className="cover">
@@ -43,15 +49,13 @@ class Index extends React.Component {
                   </h1>
                 </div>
                 <Typed
+                className="self-typed"
                   loop
-                  typeSpeed={50}
-                  backSpeed={20}
-                  strings={["Testing", "some more testing"]}
-                  smartBackspace
+                  typeSpeed={60}
+                  backSpeed={40}
+                  strings={this.roles}
                   shuffle={false}
-                  backDelay={1}
-                  fadeOut={false}
-                  fadeOutDelay={100}
+                  backDelay={1000}
                   loopCount={0}
                   showCursor
                   cursorChar="|"
