@@ -10,6 +10,8 @@ import {
   NavLink
 } from 'reactstrap';
 
+import auth0Client from '../../services/auth0';
+
 const BsNavLink = (props) => {
   const { route, title } = props;
   return (
@@ -19,7 +21,19 @@ const BsNavLink = (props) => {
   )
 }
 
-export default class Example extends React.Component {
+const Login = () => {
+  return (
+    <span onClick={auth0Client.login} className="nav-link port-navbar-link clickable"> Login </span>
+  )
+}
+
+const Logout = () => {
+  return (
+    <span className="nav-link port-navbar-link clickable"> Logout </span>
+  )
+}
+
+export default class Header extends React.Component {
   constructor(props) {
     super(props);
 
@@ -37,7 +51,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
-          <NavbarBrand className="port-navbar-brand" href="/">Piccud.io</NavbarBrand>
+          <NavbarBrand className="port-navbar-brand" href="/">Andy Au</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -55,6 +69,12 @@ export default class Example extends React.Component {
               </NavItem>
               <NavItem className="port-navbar-item">
                 <BsNavLink route="/cv" title="CV" />
+              </NavItem>
+              <NavItem className="port-navbar-item">
+                <Login />
+              </NavItem>
+              <NavItem className="port-navbar-item">
+                <Logout />
               </NavItem>
             </Nav>
           </Collapse>
