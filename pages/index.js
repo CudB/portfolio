@@ -14,6 +14,8 @@ class Index extends React.Component {
   }
 
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
     return (
       <BaseLayout className="cover" {...this.props.auth}>
         <div className="main-section">
