@@ -72,6 +72,9 @@ class Auth0 {
   async verifyToken(token) {
     if (token) {
       const decodedToken = jwt.decode(token, { complete: true });
+
+      if (!decodedToken) { return undefined; }
+
       const jwks = await this.getJWKS();
       const jwk = jwks.keys[0];
 
@@ -106,7 +109,7 @@ class Auth0 {
     if (req.headers.cookie) {
       const tokenCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='));
       
-      if (!tokenCookie) { return undefined }
+      if (!tokenCookie) { return undefined; }
 
       const token = tokenCookie.split('=')[1];
       const verifiedToken = await this.verifyToken(token)
