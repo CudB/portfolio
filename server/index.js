@@ -24,17 +24,17 @@ const secretData = [
 app
   .prepare()
   .then(() => {
-    const server = express();
+    const server = new express();
 
     server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
       return res.json(secretData);
     });
 
-    // server.use(function (err, req, res, next) {
-    //   if (err.name === 'UnauthorizedError') {
-    //     res.status(401).send({title: 'Unauthorized', detail: 'Unauthorized Access!'});
-    //   }
-    // });
+    server.use(function (err, req, res, next) {
+      if (err.name === 'UnauthorizedError') {
+        res.status(401).send({title: 'Unauthorized', detail: 'Unauthorized Access!'});
+      }
+    });
 
     server.get('*', (req, res) => {
       return handler(req, res);
