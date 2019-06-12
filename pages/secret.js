@@ -4,21 +4,26 @@ import BasePage from '../components/BasePage';
 
 import withAuth from '../components/hoc/withAuth';
 
-import { getSecretData } from '../actions/index'
+import { getSecretData } from '../actions'
 
 class Secret extends React.Component {
 
-  static getInitialProps() {
-    const secretValue = 'secret value';
-    return {secretValue};
+  static async getInitialProps({req}) {
+    const anotherSecretData = await getSecretData(req);
+
+    return { anotherSecretData };
   }
 
-  constructor(props) {
-    super();
+  // constructor(props) {
+  //   super();
 
-    this.state = {
-      secretData: []
-    }
+  //   this.state = {
+  //     secretData: []
+  //   }
+  // }
+  
+  state = {
+    secretData: []
   }
 
   async componentDidMount() {
